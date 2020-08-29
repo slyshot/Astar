@@ -1,7 +1,7 @@
 #include "astar.h"
 #include "stdlib.h"
 #include "stdio.h"
-
+//This is a 2d-grid implementation.
 typedef struct {
 	int x;
 	int y;
@@ -16,10 +16,10 @@ char in_bounds(pos pos, dim dim) {
 	return pos.x >= 0 && pos.x < dim.w && pos.y >= 0 && pos.y < dim.h;
 }
 
-
+//This 'initializes' a node, connecting it to adjacent nodes which are within bounds
 void gen_node(node** node_map, pos _pos, dim _dim, int h, int g, int f) {
 	node **connected_nodes = malloc(sizeof(node*)*8);
-	//This all of the positions adjacent to 0,0
+	//these are all of the positions adjacent to 0,0
 	pos adj[8] = {	{.x = -1,.y = -1},
 					{.x = 0, .y = -1},
 					{.x = 1, .y = -1},
@@ -46,7 +46,6 @@ void gen_node(node** node_map, pos _pos, dim _dim, int h, int g, int f) {
 										.a_data.num_nodes = num_nodes, \
 									};
 }
-//2d grid node map allocation
 node** allocate_node_map(dim _dim) {
 	node** node_map = malloc(sizeof(node*)*_dim.w);
 	for (int x = 0; x < _dim.w; x++) {
