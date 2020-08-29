@@ -12,7 +12,7 @@ void transform(queue _queue, _UL index1, _UL index2, void* nothing) {
 	((node*)_queue[index1])->a_data.qid = index1;
 	((node*)_queue[index2])->a_data.qid = index2;
 }
-void astar(node *end_node, node *start_node, long (hscore)(node*, node*), long (gscore)(node*, node*)) {
+void astar(node *start_node, node *end_node, long (hscore)(node*, node*), long (gscore)(node*, node*)) {
 	unsigned pqueue_max_len = 10;
 	unsigned pqueue_len = 0;
 	queue pqueue = calloc(sizeof(node*),pqueue_max_len);
@@ -20,7 +20,6 @@ void astar(node *end_node, node *start_node, long (hscore)(node*, node*), long (
 	astar_data * cdata = &cur_node->a_data;
 	cdata->hscore = hscore(cur_node, end_node);
 	cdata->fscore = cdata->gscore+cdata->hscore;
-	cdata->breadcrumb = NULL;
 	cdata->blocked = 1;
 	push(pqueue, cur_node, pqueue_len++, transform,NULL,comparator, NULL);
 

@@ -20,7 +20,15 @@ char in_bounds(pos pos, dim dim) {
 void gen_node(node** node_map, pos _pos, dim _dim, int h, int g, int f) {
 	node **connected_nodes = malloc(sizeof(node*)*8);
 	//This all of the positions adjacent to 0,0
-	pos adj[8] = {{.x = 0,.y = -1},{.x = 0,.y = 1},{.x = -1,.y = 0},{.x = 1,.y = 0},{.x = -1,.y = -1},{.x = 1,.y = -1},{.x = -1,.y = 1},{.x = 1,.y = 1}};
+	pos adj[8] = {	{.x = -1,.y = -1},
+					{.x = 0, .y = -1},
+					{.x = 1, .y = -1},
+					{.x = -1,.y = 0},
+					{.x = 1, .y = 0},
+					{.x = -1,.y = 1},
+					{.x = 0, .y = 1},
+					{.x = 1, .y = 1},
+				};
 	unsigned num_nodes = 0;
 	for (int i = 0; i < 8; i++) {
 		if (in_bounds((pos){.x = (_pos.x + adj[i].x),.y = (_pos.y + adj[i].y)}, _dim)) {
@@ -34,11 +42,11 @@ void gen_node(node** node_map, pos _pos, dim _dim, int h, int g, int f) {
 										.a_data.hscore = h, \
 										.a_data.gscore = g, \
 										.a_data.fscore = f, \
-										.a_data.connected_nodes = (node**)connected_nodes, \
+										.a_data.connected_nodes = connected_nodes, \
 										.a_data.num_nodes = num_nodes, \
 									};
 }
-
+//2d grid node map allocation
 node** allocate_node_map(dim _dim) {
 	node** node_map = malloc(sizeof(node*)*_dim.w);
 	for (int x = 0; x < _dim.w; x++) {
@@ -89,7 +97,7 @@ int main(int argc, char const *argv[]) {
 	int blocked[][2] = {{0,1},{1,1},{2,1},{3,1},{5,0},{4,2}};
 	node * startnode = &map[0][0]; 
 	node * endnode = &map[9][9]; 
-	for (int i = 0; i < sizeof(blocked)/sizeof(int[2]); i++) {
+	for (unsigned long i = 0; i < sizeof(blocked)/sizeof(int[2]); i++) {
 		map[blocked[i][0]][blocked[i][1]].a_data.blocked = 1;
 	}
 	astar(startnode,endnode,get_hscore,get_gscore);
