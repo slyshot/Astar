@@ -1,9 +1,6 @@
 PROG = test
 CC = gcc
-#CC = clang
 LD = $(CC)
-#LD = gcc -E
-#IGNORES = $(shell find . -name "!IGNORE")
 C_FILES = $(shell find . -name "*.c")
 IGNORES = $(shell find . -name "*.c" | grep "!IGNORE")
 SRC = $(filter-out $(IGNORES),$(C_FILES))
@@ -13,16 +10,7 @@ IGN_OBJ = $(patsubst %.c,%.o,$(IGNORES))
 IGN_DEP = $(patsubst %.c,%.d,$(IGNORES))
 
 CFLAGS = -Wall -Wextra
-#CFLAGS += `sdl2-config --cflags` -I/usr/include/SDL2
 CFLAGS +=  -I./src/headers
-#CFLAGS += -O2
-CFLAGS += -g
-#CFLAGS += -fsanitize=address
-#LDFLAGS += -lasan
-#CFLAGS += -pthread
-#LDFLAGS = `sdl2-config --libs` -L/usr/local/lib -lGLEW -lGL -lGLU
-#LDFLAGS += -lm
-#CFLAGS += -pthread
 COMPILE = $(CC) $(CFLAGS)
 LINK = $(LD) $(LDFLAGS)
 
