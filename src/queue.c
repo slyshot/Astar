@@ -30,22 +30,3 @@ void push(queue _queue, queue_element item, _UL index, void (*sw)(queue, _UL, _U
 	_queue[index] = item;
 	sift_up(index,_queue, sw,sw_a,comp,c_a);
 }
-
-
-/*
-I made this for the a* algorithm, but I worked to keep it agnostic.
-This meant I had to have a lot of things which are certainly not required for a simple implementation.
-
-You pass the "sw" function, which, taking as parameters the queue, two indexes, and a void ptr(I'll get to that),
-it switches queue[index1] and queue[index2].
-
-Now, I could do that within the function, but having it be passed makes the most sense considering that you may want it to report what's being moved where in a custom way, as is in my a* implementation.
-
-"comp" is similar, where you may want it to prioritize minimizing or maximizing.
-The void c_a and sw_a are arguments it will pass to void*, so that you might call push() and pass something over to the comparing function or the switching function, without it ever going into global scope.
-
--
-
-I would love for things to be simpler, where you have a little bit of setup and then just push or pop with a void*, but that would require an internal state.
-And I abhor internal states ;_;.
-*/

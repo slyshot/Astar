@@ -38,12 +38,12 @@ void gen_node(node** node_map, pos _pos, dim _dim, int h, int g, int f) {
 	pos* position = malloc(sizeof(pos));
 	position->x = _pos.x;
 	position->y = _pos.y;
-	node_map[_pos.x][_pos.y] = (node){	.data = position, \
-										.a_data.hscore = h, \
-										.a_data.gscore = g, \
-										.a_data.fscore = f, \
-										.a_data.connected_nodes = connected_nodes, \
-										.a_data.num_nodes = num_nodes, \
+	node_map[_pos.x][_pos.y] = (node){	.data = position,
+										.a_data.hscore = h,
+										.a_data.gscore = g,
+										.a_data.fscore = f,
+										.a_data.connected_nodes = connected_nodes,
+										.a_data.num_nodes = num_nodes,
 									};
 }
 node** allocate_node_map(dim _dim) {
@@ -53,7 +53,7 @@ node** allocate_node_map(dim _dim) {
 	}
 	for (int y = 0; y < _dim.h; y++) {
 		for (int x = 0; x < _dim.w; x++) {
-				gen_node(node_map, (pos){x,y},_dim,0,0,0);
+			gen_node(node_map, (pos){x,y},_dim,0,0,0);
 		}
 	}
 	return node_map;
@@ -85,9 +85,6 @@ long get_hscore(node* node1, node* node2) {
 long get_gscore(node* node1, node* node2) {
 	return get_hscore(node1,node2);
 }
-
-
-
 
 int main(int argc, char const *argv[]) {
 	//A little test case.
