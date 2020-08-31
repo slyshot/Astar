@@ -21,7 +21,7 @@ void astar(node *start_node, node *end_node, long (hscore)(node*, node*), long (
 	cdata->hscore = hscore(cur_node, end_node);
 	cdata->fscore = cdata->gscore+cdata->hscore;
 	cdata->blocked = 1;
-	push(pqueue, cur_node, pqueue_len++, transform,NULL,comparator, NULL);
+	push(pqueue, pqueue_len++, cur_node, transform,NULL,comparator, NULL);
 
 	node * neighbor;
 	while (pqueue_len > 0 && cur_node != end_node) {
@@ -37,7 +37,7 @@ void astar(node *start_node, node *end_node, long (hscore)(node*, node*), long (
 				ndata->gscore = tenative_gscore;
 				ndata->fscore = ndata->gscore+ndata->hscore;
 				ndata->breadcrumb = cur_node;
-				push(pqueue, neighbor, pqueue_len++, transform, NULL, comparator, NULL);
+				push(pqueue, pqueue_len++, neighbor, transform, NULL, comparator, NULL);
 			} else if (tenative_gscore < ndata->gscore) {
 				ndata->gscore = tenative_gscore;
 				ndata->fscore = ndata->gscore+ndata->hscore;
