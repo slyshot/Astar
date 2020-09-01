@@ -97,7 +97,7 @@ int main(int argc, char const *argv[]) {
 		map[blocked[i][0]][blocked[i][1]].a_data.blocked = 1;
 	}
 	astar(startnode,endnode,get_hscore,get_gscore);
-	node* cur_breadcrumb = startnode;
+	node* cur_breadcrumb = endnode;
 	while (cur_breadcrumb != NULL) {
 		printf("%d,%d\n",(*(pos*)cur_breadcrumb->data).x,(*(pos*)cur_breadcrumb->data).y);
 		cur_breadcrumb = cur_breadcrumb->a_data.breadcrumb;

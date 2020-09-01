@@ -4,7 +4,8 @@
 
 //qid might seem like a strange one, but what it marks where in the priority queue that particular node is.
 typedef struct astar_data {
-	char blocked;
+	char blocked:1;
+	char discovered:1;
 	struct node * breadcrumb;
 	long hscore;
 	long gscore;

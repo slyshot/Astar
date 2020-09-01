@@ -18,8 +18,9 @@ void astar(node *start_node, node *end_node, long (hscore)(node*, node*), long (
 	queue pqueue = calloc(sizeof(node*),pqueue_max_len);
 	node * cur_node = start_node;
 	astar_data * cdata = &cur_node->a_data;
-	cdata->hscore = hscore(cur_node, end_node);
-	cdata->fscore = cdata->gscore+cdata->hscore;
+	cdata->hscore += hscore(cur_node, end_node);
+	cdata->fscore += cdata->gscore+cdata->hscore;
+	cdata->discovered = 1;
 	cdata->blocked = 1;
 	push(pqueue, pqueue_len++, cur_node, transform,NULL,comparator, NULL);
 
@@ -32,10 +33,11 @@ void astar(node *start_node, node *end_node, long (hscore)(node*, node*), long (
 			astar_data *ndata = &neighbor->a_data;
 			if (neighbor->a_data.blocked) continue;
 			int tenative_gscore = cur_node->a_data.gscore + gscore(cur_node,neighbor);
-			if (ndata->gscore == 0) {
-				ndata->hscore = hscore(neighbor, end_node);
-				ndata->gscore = tenative_gscore;
-				ndata->fscore = ndata->gscore+ndata->hscore;
+			if (ndata->discovered == 0) {
+				ndata->discovered = 1;
+				ndata->hscore += hscore(neighbor, end_node);
+				ndata->gscore += tenative_gscore;
+				ndata->fscore += ndata->gscore+ndata->hscore;
 				ndata->breadcrumb = cur_node;
 				push(pqueue, pqueue_len++, neighbor, transform, NULL, comparator, NULL);
 			} else if (tenative_gscore < ndata->gscore) {
