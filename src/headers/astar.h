@@ -1,6 +1,6 @@
-#include "queue.h"
 #ifndef _ASTAR
 #define _ASTAR
+#include "queue.h"
 
 //qid might seem like a strange one, but what it marks where in the priority queue that particular node is.
 typedef struct astar_data {
