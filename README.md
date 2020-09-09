@@ -92,7 +92,7 @@ If you want any node to be entirely blocked off as a 'wall', you can initialize
 `node.blocked` to 1.
 
 
-####Wrapping it up
+#### Wrapping it up
 
 Say, you want to store ints in a max-heap way, and your struct for doing that looks like:
 
