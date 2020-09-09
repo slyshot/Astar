@@ -92,3 +92,20 @@ If you want any node to be entirely blocked off as a 'wall', you can initialize
 `node.blocked` to 1.
 
 
+#### Wrapping it up
+
+Say, you want to store ints in a max-heap way, and your struct for doing that looks like:
+
+```C
+typedef struct {
+	int priority;
+	int data;
+} node_data
+```
+Calls to a priority queue will use the comp and switch function from earlier.
+Since no special arguments are being passed, there's no need for `comp_a` or `sw_a`.
+
+So `queue_element pop(queue _queue, _UL queue_len, _switch sw, void *sw_arg, _compare comp, void *c_arg);`
+becomes `queue_element pop_max(queue _queue, _UL queue_len);`, which calls pop with your given comp, sw, and NULL as sw_arg and c_arg.
+
+Writing wrappers like this for your use-case will clearly make the code much less messy.

@@ -19,6 +19,6 @@ void sift_up_once(_UL index, queue _queue, _switch sw,void *t_arg, _compare comp
 
 void sift_up(_UL index, queue _queue, _switch sw,void *t_arg, _compare comp, void *c_arg);
 
-void push(queue _queue, _UL queue_len, queue_element item, _switch sw,void *t_arg, _compare comp, void *c_arg);
+void push(queue _queue, _UL queue_len, queue_element item, _switch sw,void *sw_arg, _compare comp, void *c_arg);
 
 #endif
