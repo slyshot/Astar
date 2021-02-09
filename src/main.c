@@ -39,12 +39,12 @@ void gen_node(node** node_map, pos _pos, dim _dim, int h, int g, int f) {
 	position->x = _pos.x;
 	position->y = _pos.y;
 	node_map[_pos.x][_pos.y] = (node){	.data = position,
-										.a_data.hscore = h,
-										.a_data.gscore = g,
-										.a_data.fscore = f,
-										.a_data.connected_nodes = connected_nodes,
-										.a_data.num_nodes = num_nodes,
-									};
+						.a_data.hscore = h,
+						.a_data.gscore = g,
+						.a_data.fscore = f,
+						.a_data.connected_nodes = connected_nodes,
+						.a_data.num_nodes = num_nodes,
+					};
 }
 node** allocate_node_map(dim _dim) {
 	node** node_map = malloc(sizeof(node*)*_dim.w);
