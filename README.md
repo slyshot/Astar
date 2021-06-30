@@ -32,7 +32,7 @@ The queue is moderately complicated in construction, so as to allow many use-cas
 
 All it does is move void ptrs around in a priority-queue pattern. You give it the function to do the smallest unit of movement( Called `sw`, would normally switch two pointers), and the function for comparing two ptrs(called `comp`).
 
-It may seem strange to input `sw` and `comp` when you could have a preset way to compare or switch pointers, but again, the user may want to do it one or another way(And having a preset comparison or switch assumes a structure rather than void ptrs). In A*, I found it useful to do other things two pointers were switched, to keep track of their position in the priority queue.
+It may seem strange to input `sw` and `comp` when you could have a preset way to compare or switch pointers, but again, the user may want to do it one or another way(And having a preset comparison or switch assumes a structure rather than void ptrs). In A*, I found it useful to do other things when two pointers were switched, to keep track of their position in the priority queue.
 
 `sw_a` and `c_a` are void ptrs that get passed along to the switch function and comparator function respectively. That's mostly so that if you *do* want to do something unusual with `sw` or `comp`, you can do that without messing with global variables.
 
