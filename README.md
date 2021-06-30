@@ -67,7 +67,7 @@ _UL sw(queue q, _UL index1, _UL index2, void* sw_a) {
 
 `astar` is a function that takes a starting node, an ending node, a gscore function, and an hscore function.
 
-It returns nothing. Instead, the pointer `endnode.breadcrumb` will be another node(or NULL if the a* failed to get a path). Keep on dereferencing breacrumbs until you're back to the startnode, and that'll walk you through the optimal path.
+It returns nothing. Instead, the pointer `endnode.a_data.breadcrumb` will be another node(or NULL if the a* failed to get a path). Keep on dereferencing breacrumbs until you're back to the startnode, and that'll walk you through the optimal path.
 
 The gscore and hscore functions, as expected, take two nodes and returns the hscore and gscore btween them.
 
