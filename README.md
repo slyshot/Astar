@@ -14,7 +14,7 @@ Its' use is with node networks, so while it'll work on a 2d grid, it can do much
 ## Why?
 
 Well, it's a really simple procedure for what it's trying to get done, so I personally believe it'd be a shame if you don't try your hand at it.
-I have a few times, but all my other attempts have relied on a 2d grid. That may mean less clock cycles, but at the expense of many use cases.
+I have a few times, but all my other attempts have relied on a 2d grid. That may mean fewer clock cycles, but at the expense of many use cases.
 
 And some of those, I've been thinking of as a side-project.
 
